@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
 
@@ -25,19 +26,18 @@ public class ProgramController {
     }
 
     @GetMapping("/generate-programms")
-    public String generate_programms (Model model){
+    public @ResponseBody String generate_programms (Model model){
 
         for (int i = 0; i < 10; i++){
             Program p = new Program("programm " + i, "v. " + i, "FFFFFFF" + i, new Date(), "user " + i);
             pr.save(p);
         }
-        return "redirect:/journal/program";
+        return "Gegerated. Count: " + pr.count();
     }
 
     @GetMapping("/delete-programms")
-    public String delete_programms (Model model){
-
+    public @ResponseBody String delete_programms (Model model){
         pr.deleteAll();
-        return "redirect:/journal/program";
+        return "Deleted. Count: " + pr.count();
     }
 }
