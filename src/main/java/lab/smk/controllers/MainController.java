@@ -13,31 +13,12 @@ import java.util.Date;
 @Controller
 public class MainController {
 
-    @Autowired
-    private WeatherRepository wr;
+
 
     @GetMapping("/")
     public String main (Model model){
-
-        Iterable<Weather> w = wr.findAll();
-        model.addAttribute("weathers", w);
         return "index";
     }
 
-    @GetMapping("/generate-weathers")
-    public String generate_weathers (Model model){
 
-        for (int i = 0; i < 10; i++){
-            Weather w = new Weather(new Date(), 20 + i, 45 + i, 730 + i * 3);
-            wr.save(w);
-        }
-        return "redirect:/";
-    }
-
-    @GetMapping("/delete-weathers")
-    public String delete_weathers (Model model){
-
-        wr.deleteAll();
-        return "redirect:/";
-    }
 }
