@@ -19,8 +19,8 @@
             </tr>
         </thead>
 
-        <tbody th:each="weather : ${weathers}">
-            <tr>
+        <tbody >
+            <tr th:each="weather : ${weathers}">
                 <td th:text="${weather.date}"></td>
                 <td th:text="${weather.temp}"></td>
                 <td th:text="${weather.pres}"></td>
