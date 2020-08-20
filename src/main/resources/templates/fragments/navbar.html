@@ -1,10 +1,20 @@
-<div th:fragment="navbar">
-    <p> Ну допустим тут как бы навбар</p>
+<div th:fragment="navbar" style="float: left" >
+    <div class="menu">
 
-    <ul>
-        <li> <a href="/"> Главная </a> </li>
-        <li> <a href="/journal/weather"> Журнал погоды </a> </li>
-        <li> <a href="/journal/program"> Журнал программ </a> </li>
-    </ul>
-
+<!--        <button class="button">
+            Меню
+        </button>
+        <div class="dropdown-child">
+            <a href="/"> Главная </a>
+            <a href="/journal/weather"> Журнал погоды </a>
+            <a href="/journal/program"> Журнал программ </a>
+        </div>
+-->
+        <h2>Меню</h2>
+        <ul>
+            <li><a href="/"> Главная </a></li>
+            <li><a href="/journal/weather"> Журнал погоды </a></li>
+            <li><a href="/journal/program"> Журнал программ </a></li>
+        </ul>
+    </div>
 </div>

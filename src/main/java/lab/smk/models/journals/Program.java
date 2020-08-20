@@ -1,9 +1,12 @@
 package lab.smk.models.journals;
 
+import sun.util.resources.LocaleData;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,10 +19,10 @@ public class Program {
     private String name;
     private String version;
     private String hash;
-    private Date dateAdded;
+    private LocalDate dateAdded;
     private String userAdded;
 
-    public Program(String name, String version, String hash, Date dateAdded, String userAdded) {
+    public Program(String name, String version, String hash, LocalDate dateAdded, String userAdded) {
         this.name = name;
         this.version = version;
         this.hash = hash;
@@ -62,11 +65,11 @@ public class Program {
         this.hash = hash;
     }
 
-    public Date getDateAdded() {
+    public LocalDate getDateAdded() {
         return dateAdded;
     }
 
-    public void setDateAdded(Date dateAdded) {
+    public void setDateAdded(LocalDate dateAdded) {
         this.dateAdded = dateAdded;
     }
 

@@ -27,7 +27,7 @@ public class WeatherController {
     }
 
     @PostMapping("/journal/weather/add")
-    public @ResponseBody String weatherAdd (
+    public String weatherAdd (
             @RequestParam String temp,
             @RequestParam String hum,
             @RequestParam String pres,
@@ -41,27 +41,29 @@ public class WeatherController {
                 Double.parseDouble(pres),
                 Double.parseDouble(hum));
 
-        //ищем в БД последнюю запись
-        Weather lastWeather = wr.findLastWeather();
-
-        //Проверяем на совпадение дат
-        if ( newWeather.getDate().equals(lastWeather.getDate())){
-            //даты совпали
-            //проверяем разницу по времени в 5 минут
-            if(Math.abs(newWeather.getTime().getMinute() - lastWeather.getTime().getMinute()) <= 5 ){
-                //разница меньше 5 минут ==> удаляем старую запись, добавляем новую
-                wr.deleteById(lastWeather.getId());
-                wr.save(newWeather);
-                return "Changed. New value: " +  newWeather.toString();
-            } else {
-                //разница больше 5 минут ==> ниче не делаем
-                return "NOT changed. More than 5 minutes passed";
-            }
-        } else {
-            //даты не совпали ==> добавляем новую запись
-            wr.save(newWeather);
-            return "Added. New value: " +  newWeather.toString();
-        }
+//        //ищем в БД последнюю запись
+//        Weather lastWeather = wr.findLastWeather();
+//
+//        //Проверяем на совпадение дат
+//        if ( newWeather.getDate().equals(lastWeather.getDate())){
+//            //даты совпали
+//            //проверяем разницу по времени в 5 минут
+//            if(Math.abs(newWeather.getTime().getMinute() - lastWeather.getTime().getMinute()) <= 5 ){
+//                //разница меньше 5 минут ==> удаляем старую запись, добавляем новую
+//                wr.deleteById(lastWeather.getId());
+//                wr.save(newWeather);
+//                return "Changed. New value: " +  newWeather.toString();
+//            } else {
+//                //разница больше 5 минут ==> ниче не делаем
+//                return "NOT changed. More than 5 minutes passed";
+//            }
+//        } else {
+//            //даты не совпали ==> добавляем новую запись
+//            wr.save(newWeather);
+//            return "Added. New value: " +  newWeather.toString();
+//        }
+        wr.save(newWeather);
+        return "redirect:/journal/weather";
     }
 
     @GetMapping("/generate-weathers")
