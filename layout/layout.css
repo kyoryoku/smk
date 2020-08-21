@@ -1,0 +1,47 @@
+.text-white{
+	color: white;
+	font-size: 24pt;
+}
+
+.lab-head{
+    background-color: #bf0f85;
+    height: 50px;
+}
+
+.lab-navbar{
+    background-color: #0b4d31;
+    height: 2000px;
+    width: 200px;
+    margin-top: 55px;
+}
+
+.lab-main-content{
+	padding-top: 55px; 
+	padding-left: 190px;
+}
+
+.lab-tools{
+	background-color: #720f96;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.lab-content{
+    background-color: #0a0840;
+    height: 3000px;
+    float: left;
+
+}
+
+.lab-head-logo{
+    width: 45px;
+    height: 45px;
+}
+
+.lab-head-text{
+    fontsize:
+}
+
+.lab-head-username{
+
+}

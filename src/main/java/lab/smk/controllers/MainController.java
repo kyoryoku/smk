@@ -9,6 +9,17 @@ public class MainController {
 
     @GetMapping("/")
     public String main (Model model){
-        return "index";
+        return "login";
     }
+
+    @GetMapping("/login")
+    public String login (Model model){
+        return "login";
+    }
+
+    @GetMapping("/home")
+    public String home (Model model){
+        return "home";
+    }
+
 }

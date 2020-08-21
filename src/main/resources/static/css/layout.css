@@ -1,0 +1,64 @@
+.lab-head{
+    height: 50px;
+    background-color: transparent;
+}
+
+.lab-navbar{
+    height: 2000px;
+    width: 200px;
+    margin-top: 55px;
+    background-color: transparent;
+}
+
+.lab-main-content{
+	padding-top: 55px; 
+	padding-left: 190px;
+}
+
+.lab-tools{
+    height: 30px;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+
+.lab-content{
+    height: 3000px;
+    float: left;
+    background-color: transparent;
+}
+
+.lab-head-logo{
+    float: left;
+    position: fixed;
+    margin-top: 2px;
+    margin-left: 2px;
+    width: 45px;
+    height: 45px;
+}
+
+.lab-head-text{
+    float: left;
+    position: fixed;
+    font-size: 18pt;
+    left: 50px;
+    top: 5px;
+}
+
+.lab-head-username{
+    font-size: 14pt;
+    position: fixed;
+    right: 20px;
+    top: 10px;
+}
+
+body, html {
+    height: 100%;
+}
+
+.lab-login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 10pt;
+}

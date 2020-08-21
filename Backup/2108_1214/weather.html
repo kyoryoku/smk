@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(${'Weather Page'})"/>
+    <body>
+
+        <div th:replace="fragments/navbar :: navbar" />
+
+    <!-- кнопка добавить строку в таблицу погоды -->
+        <form action="/journal/weather/add" method="post">
+            <button type="button" class="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Добавьте значения</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="temp" class="col-form-label">Температура:</label>
+                                    <input type="text" class="form-control" name="temp" id="temp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hum" class="col-form-label">Влажность:</label>
+                                    <input type="text"  class="form-control" name="hum" id="hum">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pres" class="col-form-label">Давление:</label>
+                                    <input type="text" class="form-control" name="pres" id="pres">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Сохранить запись</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- таблица -->
+        <div class="table-margin">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col" >Дата</th>
+                    <th scope="col">Температура</th>
+                    <th scope="col">Влажность</th>
+                    <th scope="col">Давление</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="el : ${weatherList}">
+                    <td th:text="${el.date}"></td>
+                    <td th:text="${el.temp}"></td>
+                    <td th:text="${el.pres}"></td>
+                    <td th:text="${el.hum}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+       <!-- <div th:replace="fragments/calendar :: line" /> -->
+
+        <div th:replace="fragments/footer :: footer" />
+        <div th:insert="fragments/bootstrap :: bootstrap-js"/>
+    </body>
+</html>

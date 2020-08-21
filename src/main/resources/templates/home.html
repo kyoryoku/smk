@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/bootstrap :: bootstrap-css"/>
+    <div th:replace="fragments/external_styles :: external-css"/>
+    <title>Home Page</title>
+</head>
+<body>
+<div th:replace="fragments/head :: head" />
+<div th:replace="fragments/navbar :: navbar" />
+
+<div class="lab-main-content">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col">
+                <div class="container-fluid lab-content">
+                    HOME PAGE
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/bootstrap :: bootstrap-js"/>
+</body>
+</html>

@@ -34,6 +34,7 @@ public class UserController {
     {
         HashSet<Role> roles = new HashSet<Role>();
         roles.add(Role.ADMIN);
+        roles.add(Role.USER);
         User newUser = new User(username, password, active, roles );
         ur.save(newUser);
         return "User added. " + newUser.toString();
