@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/bootstrap :: bootstrap-css"/>
-    <div th:replace="fragments/external_styles :: external-css"/>
-    <title>Weather Page</title>
-</head>
+<head th:replace="fragments/header :: header(${'Program page'})"/>
 <body>
 <div th:replace="fragments/head :: head" />
 <div th:replace="fragments/navbar :: navbar" />
 
-<div class="lab-main-content">
+<div class="lab-layout-main-content">
     <div class="container-fluid">
-
-        <!-- кнопка добавить строку в таблицу погоды -->
         <div class="row">
             <div class="col">
-                <div class="lab-tools">
+                <div class="lab-layout-tools">
 
                     <form action="/journal/program/add" method="post">
                         <button type="button" class="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
@@ -61,11 +55,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- таблица -->
         <div class="row ">
             <div class="col">
-                <div class="container-fluid lab-content">
+                <div class="container-fluid lab-layout-content">
                     <table class="table" >
                         <thead class="thead-dark">
                         <tr>
@@ -93,6 +85,6 @@
     </div>
 </div>
 
-<div th:replace="fragments/bootstrap :: bootstrap-js"/>
+<div th:replace="fragments/scripts :: bootstrap-js"/>
 </body>
 </html>

@@ -1,33 +1,29 @@
-.lab-head{
+.lab-layout-head{
     height: 50px;
-    background-color: transparent;
 }
 
-.lab-navbar{
+.lab-layout-navbar{
     height: 2000px;
     width: 200px;
-    margin-top: 55px;
-    background-color: transparent;
+    margin-top: 50px;
 }
 
-.lab-main-content{
-	padding-top: 55px; 
+.lab-layout-main-content{
+	padding-top: 50px;
 	padding-left: 190px;
 }
 
-.lab-tools{
+.lab-layout-tools{
     height: 30px;
     margin-bottom: 5px;
-    background-color: transparent;
 }
 
-.lab-content{
+.lab-layout-content{
     height: 3000px;
     float: left;
-    background-color: transparent;
 }
 
-.lab-head-logo{
+.lab-layout-head-logo{
     float: left;
     position: fixed;
     margin-top: 2px;
@@ -36,7 +32,7 @@
     height: 45px;
 }
 
-.lab-head-text{
+.lab-layout-head-text{
     float: left;
     position: fixed;
     font-size: 18pt;
@@ -44,21 +40,26 @@
     top: 5px;
 }
 
-.lab-head-username{
-    font-size: 14pt;
+.lab-layout-head-username{
     position: fixed;
     right: 20px;
     top: 10px;
 }
 
-body, html {
-    height: 100%;
+.lab-layout-head-username-text{
+    font-size: 14pt;
 }
 
-.lab-login-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    font-size: 10pt;
+.lab-layout-login-form{
+    margin-top: 15%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.lab-layout-login-div{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
 }

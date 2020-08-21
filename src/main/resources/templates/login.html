@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <div th:replace="fragments/bootstrap :: bootstrap-css"/>
-    <div th:replace="fragments/external_styles :: external-css"/>
-    <title>Login Page</title>
-</head>
+<head th:replace="fragments/header :: header(${'Login page'})"/>
 <body>
-<div th:if="${param.error}">
-    Invalid username and password.
+
+<div class="lab-layout-login-div lab-color-background-main ">
+    <div class="lab-layout-login-form ">
+
+        <form action="/login" method="post">
+
+            <div class="form-group">
+                <label class="lab-color-white lab-font-size-main" for="username">Имя пользователя:</label>
+                <input class="form-control" id="username" type="text" name="username"/>
+            </div>
+
+            <div class="form-group">
+                <label class="lab-color-white lab-font-size-main" for="password">Пароль:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label class="lab-font-size-main" for="button"></label>
+                <button type="submit" class="btn btn-warning btn-block" id="button">Войти</button>
+            </div>
+
+            <div th:if="${param.error}">
+                <p class="lab-color-yellow lab-font-size-main"> Не верное имя пользователя или пароль! </p>
+            </div>
+
+            <div th:if="${param.logout}">
+                <p class="lab-color-yellow lab-font-size-main"> Выполнен выход. </p>
+            </div>
+
+        </form>
+    </div>
 </div>
 
-<div class="lab-login-form">
-
-    <form action="/login" method="post">
-        <div class="form-group">
-            <label for="username">Имя пользователя:</label>
-            <input class="form-control" id="username" type="text" name="username"/>
-        </div>
-        <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Войти</button>
-    </form>
-
-</div>
-
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+<div th:replace="fragments/scripts :: bootstrap-js"/>
 </body>
 </html>

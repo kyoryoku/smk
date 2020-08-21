@@ -1,11 +1,8 @@
-
 .lab-dropdown-item {
   display: block;
   width: 100%;
   clear: both;
-  color: #212529;
   text-align: inherit;
   white-space: nowrap;
-  background-color: transparent;
   padding-right: 10px;
 }
