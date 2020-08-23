@@ -2,87 +2,76 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header(${'Program page'})"/>
 <body>
-<div th:replace="fragments/head :: head" />
-<div th:replace="fragments/navbar :: navbar" />
 
-<div class="lab-layout-main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="lab-layout-tools">
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
 
-                    <form action="/journal/program/add" method="post">
-                        <button type="button" class="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
+<div class="lab-main">
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Добавьте значения</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="name" class="col-form-label">Название:</label>
-                                                <input type="text" class="form-control" name="name" id="name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="version" class="col-form-label">Версия:</label>
-                                                <input type="text"  class="form-control" name="version" id="version">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="hash" class="col-form-label">Хеш:</label>
-                                                <input type="text" class="form-control" name="hash" id="hash">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="userAdded" class="col-form-label">Имя пользователя:</label>
-                                                <input type="text" class="form-control" name="userAdded" id="userAdded">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                                        <button type="submit" class="btn btn-primary">Сохранить запись</button>
-                                    </div>
-                                </div>
+    <form action="/journal/program/add" method="post">
+        <button type="button" class="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Добавьте значения</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="name" class="col-form-label">Название:</label>
+                                <input type="text" class="form-control" name="name" id="name">
                             </div>
-                        </div> <!-- / модальное окно-->
-                    </form>
-
+                            <div class="form-group">
+                                <label for="version" class="col-form-label">Версия:</label>
+                                <input type="text"  class="form-control" name="version" id="version">
+                            </div>
+                            <div class="form-group">
+                                <label for="hash" class="col-form-label">Хеш:</label>
+                                <input type="text" class="form-control" name="hash" id="hash">
+                            </div>
+                            <div class="form-group">
+                                <label for="userAdded" class="col-form-label">Имя пользователя:</label>
+                                <input type="text" class="form-control" name="userAdded" id="userAdded">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Сохранить запись</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row ">
-            <div class="col">
-                <div class="container-fluid lab-layout-content">
-                    <table class="table" >
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Название</th>
-                            <th scope="col">Версия</th>
-                            <th scope="col">Хеш</th>
-                            <th scope="col">Имя пользователя</th>
-                            <th scope="col">Дата добавления</th>
-                        </tr>
-                        </thead>
+        </div> <!-- / модальное окно-->
+    </form>
 
-                        <tbody >
-                        <tr th:each="el : ${programList}">
-                            <td th:text="${el.name}"></td>
-                            <td th:text="${el.version}"></td>
-                            <td th:text="${el.hash}"></td>
-                            <td th:text="${el.userAdded}"></td>
-                            <td th:text="${el.dateAdded}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <table class="table" >
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Версия</th>
+            <th scope="col">Хеш</th>
+            <th scope="col">Имя пользователя</th>
+            <th scope="col">Дата добавления</th>
+        </tr>
+        </thead>
+
+        <tbody >
+        <tr th:each="el : ${programList}">
+            <td th:text="${el.name}"></td>
+            <td th:text="${el.version}"></td>
+            <td th:text="${el.hash}"></td>
+            <td th:text="${el.userAdded}"></td>
+            <td th:text="${el.dateAdded}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 
 <div th:replace="fragments/scripts :: bootstrap-js"/>

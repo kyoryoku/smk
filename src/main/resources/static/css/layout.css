@@ -1,65 +1,35 @@
-.lab-layout-head{
-    height: 50px;
+.lab-sidenav{
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 100px;
 }
 
-.lab-layout-navbar{
+.lab-main{
+    margin-left: 250px;
+    margin-top: 76px;
     height: 2000px;
-    width: 200px;
-    margin-top: 50px;
+    background-color: #0045b5;
 }
 
-.lab-layout-main-content{
-	padding-top: 50px;
-	padding-left: 190px;
+.nav-link{
+    color: white;
 }
 
-.lab-layout-tools{
-    height: 30px;
-    margin-bottom: 5px;
-}
-
-.lab-layout-content{
-    height: 3000px;
-    float: left;
-}
-
-.lab-layout-head-logo{
-    float: left;
-    position: fixed;
-    margin-top: 2px;
-    margin-left: 2px;
-    width: 45px;
-    height: 45px;
-}
-
-.lab-layout-head-text{
-    float: left;
-    position: fixed;
-    font-size: 18pt;
-    left: 50px;
-    top: 5px;
-}
-
-.lab-layout-head-username{
-    position: fixed;
-    right: 20px;
-    top: 10px;
-}
-
-.lab-layout-head-username-text{
+.nav-link2{
+    color: white;
     font-size: 14pt;
 }
 
-.lab-layout-login-form{
-    margin-top: 15%;
-    margin-left: 40%;
-    margin-right: 40%;
-}
-
-.lab-layout-login-div{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%
+.lab-dropdown-item {
+    display: block;
+    width: auto;
+    clear: both;
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 10px;
 }

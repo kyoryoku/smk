@@ -3,20 +3,13 @@
 <head th:replace="fragments/header :: header(${'Home page'})"/>
 <body>
 
-<div th:replace="fragments/head :: head" />
-<div th:replace="fragments/navbar :: navbar" />
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
 
-<div class="lab-layout-main-content lab-color-background-main">
-    <div class="container-fluid">
-        <div class="row ">
-            <div class="col">
-                <div class="container-fluid lab-layout-content">
-                    HOME PAGE
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="lab-main">
+    dsadsa asd as das dsa
 </div>
+
 
 <div th:replace="fragments/scripts :: bootstrap-js"/>
 </body>
