@@ -1,6 +1,5 @@
 .lab-main{
     background-color: #343a40;
-    color: white;
 }
 
 .nav-link{
@@ -8,5 +7,13 @@
 }
 
 .nav-link2{
+    color: white;
+}
+
+.lab-login-maindiv{
+    background-color: #343a40;
+}
+
+.lab-login-label{
     color: white;
 }

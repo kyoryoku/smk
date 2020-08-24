@@ -13,15 +13,9 @@
     margin-left: 250px;
     margin-top: 76px;
     height: 2000px;
-    background-color: #0045b5;
-}
-
-.nav-link{
-    color: white;
 }
 
 .nav-link2{
-    color: white;
     font-size: 14pt;
 }
 
@@ -32,4 +26,19 @@
     text-align: right;
     white-space: nowrap;
     padding-right: 10px;
+}
+
+.lab-login-maindiv{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+.lab-login-formdiv{
+    margin-top: 5%;
+    margin-left: 37%;
+    margin-right: 37%
 }

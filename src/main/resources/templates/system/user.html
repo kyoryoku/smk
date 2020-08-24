@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Administration page'})"/>
+<body>
+
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
+
+<div class="lab-main">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn" data-toggle="modal" data-target="#addModal">Добавить</button>
+
+    <!-- Modal -->
+    <form action="/system/user/add" method="post">
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Создание пользователя</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="username" class="col-form-label">Логин:</label>
+                                    <input type="text" class="form-control" name="username" id="username">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label for="password" class="col-form-label">Пароль:</label>
+                                    <input type="password" class="form-control" name="password" id="password">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="firstname" class="col-form-label">Имя:</label>
+                                    <input type="text" class="form-control" name="firstname" id="firstname">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label for="lastname" class="col-form-label">Фамилия:</label>
+                                    <input type="text" class="form-control" name="lastname" id="lastname">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="patronymic" class="col-form-label">Отчество:</label>
+                                    <input type="text" class="form-control" name="patronymic" id="patronymic">
+                                </div>
+
+                                <div class="form-group col">
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" class="form-control" name="email" id="email">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="roles" class="col-form-label">Роли:</label>
+                                    <select multiple class="form-control" name="roles" id="roles">
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option selected value="USER">USER</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="active">Статус:</label>
+                                    <select class="form-control" name="active" id="active">
+                                        <option value="true" selected>Активирован</option>
+                                        <option value="false">Заблокирован</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" class="btn btn-primary">Сохранить запись</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped table-bordered table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Логин</th>
+            <th scope="col">Пароль</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">Почта</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Роль</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="el : ${userList}">
+            <td> <a th:href="@{'/system/user/' + ${el.username}}" th:text="${el.username}"> </a></td>
+            <td th:text="${el.password}"></td>
+            <td th:text="${el.lastname}"></td>
+            <td th:text="${el.firstname}"></td>
+            <td th:text="${el.patronymic}"></td>
+            <td th:text="${el.email}"></td>
+            <td th:text="${el.active} ? 'Активирован' : 'Заблокирован'"> </td>
+            <td th:text="${el.roles}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div th:replace="fragments/scripts :: bootstrap-js"/>
+</body>
+</html>
