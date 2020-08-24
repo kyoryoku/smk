@@ -34,7 +34,7 @@ public class ProgramController {
             @RequestParam String name,
             @RequestParam String version,
             @RequestParam String hash,
-            @RequestParam String userAdded,
+            @RequestParam String username,
             Model model) {
 
         //создаем новую запись
@@ -43,7 +43,7 @@ public class ProgramController {
                 version,
                 hash,
                 LocalDate.now(),
-                userAdded
+                username
                 );
         pr.save(newProgram);
         return "redirect:/journal/program";

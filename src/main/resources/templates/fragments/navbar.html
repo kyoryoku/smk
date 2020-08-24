@@ -10,7 +10,7 @@
         </a>
 
         <div class="dropdown-menu dropdown-menu-right" >
-            <a class="lab-dropdown-item" href="#">Профиль</a>
+            <a class="lab-dropdown-item" th:href="@{'/system/user/' + ${#authentication.name}}">Профиль</a>
             <a class="lab-dropdown-item" href="/logout">Выйти</a>
         </div>
     </div>

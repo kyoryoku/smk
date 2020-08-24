@@ -34,10 +34,7 @@
                                 <label for="hash" class="col-form-label">Хеш:</label>
                                 <input type="text" class="form-control" name="hash" id="hash">
                             </div>
-                            <div class="form-group">
-                                <label for="userAdded" class="col-form-label">Имя пользователя:</label>
-                                <input type="text" class="form-control" name="userAdded" id="userAdded">
-                            </div>
+                            <input hidden type="text" class="form-control" name="username" th:value="${#authentication.name}">
                         </form>
                     </div>
                     <div class="modal-footer">
