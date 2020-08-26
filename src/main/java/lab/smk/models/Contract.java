@@ -1,10 +1,11 @@
 package lab.smk.models;
 
 import lab.smk.models.system.Employee;
-import org.hibernate.mapping.Set;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "lab_contract")
@@ -24,17 +25,28 @@ public class Contract {
     private String number;
     private LocalDate date;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "contract")
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<Task> tasks;
 
     private String status;
-    private Employee employee;
 
     public Contract() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     public Customer getCustomer() {
@@ -61,11 +73,11 @@ public class Contract {
         this.date = date;
     }
 
-    public Iterable<Task> getTasks() {
+    public Set<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(Iterable<Task> tasks) {
+    public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -75,30 +87,5 @@ public class Contract {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return "Contract{" +
-                "id=" + id +
-                ", customer=" + customer +
-                ", number='" + number + '\'' +
-                ", date=" + date +
-                ", tasks=" + tasks +
-                ", status='" + status + '\'' +
-                ", employee=" + employee +
-                '}';
     }
 }

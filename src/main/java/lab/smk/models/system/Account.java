@@ -19,6 +19,9 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    public Account() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -57,19 +60,5 @@ public class Account {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public Account() {
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", active=" + active +
-                ", roles=" + roles +
-                '}';
     }
 }

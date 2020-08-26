@@ -14,12 +14,11 @@ public class MINumber {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(optional = false, mappedBy="document")
+    @OneToOne(optional = false, mappedBy="miNumber")
     private Document document;
 
     private String number;
     private LocalDate date;
-    private Employee employee;
 
     public MINumber() {
     }
@@ -28,41 +27,31 @@ public class MINumber {
         return id;
     }
 
-    public String getNumber() {
-        return number;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+
+    public String getNumber() {
+        return number;
     }
 
     public void setNumber(String number) {
         this.number = number;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @Override
-    public String toString() {
-        return "MINumber{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", date=" + date +
-                ", employee=" + employee +
-                '}';
     }
 }

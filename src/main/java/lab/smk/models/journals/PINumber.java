@@ -14,11 +14,11 @@ public class PINumber {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(optional = false, mappedBy="document")
+    @OneToOne(optional = false, mappedBy="piNumber")
     private Document document;
+
     private String number;
     private LocalDate date;
-    private Employee employee;
 
     public PINumber() {
     }
@@ -29,6 +29,14 @@ public class PINumber {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Document getDocument() {
+        return document;
+    }
+
+    public void setDocument(Document document) {
+        this.document = document;
     }
 
     public String getNumber() {
@@ -45,23 +53,5 @@ public class PINumber {
 
     public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @Override
-    public String toString() {
-        return "PINumber{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", date=" + date +
-                ", employee=" + employee +
-                '}';
     }
 }

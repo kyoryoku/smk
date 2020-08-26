@@ -19,62 +19,51 @@ public class Task {
     @OneToOne(optional = false)
     @JoinColumn(name = "document_id", unique = true, nullable = false, updatable = false)
     private Document document;
-    private Employee employee;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+
+    @ManyToOne
     @JoinColumn(name = "contract_id", nullable = false)
     private Contract contract;
 
     public Task() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTask() {
         return task;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public Document getDocument() {
-        return document;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
     public void setTask(String task) {
         this.task = task;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 
     public void setProduct(Product product) {
         this.product = product;
     }
 
+    public Document getDocument() {
+        return document;
+    }
+
     public void setDocument(Document document) {
         this.document = document;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public Contract getContract() {
+        return contract;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", task='" + task + '\'' +
-                ", product=" + product +
-                ", document=" + document +
-                ", employee=" + employee +
-                '}';
+    public void setContract(Contract contract) {
+        this.contract = contract;
     }
 }

@@ -13,7 +13,7 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne(optional = false, mappedBy = "document")
-    private Document document;
+    private Task task;
 
     @OneToOne(optional = false)
     @JoinColumn(name="miNumber_id", unique = true, nullable = false, updatable = false)
@@ -26,36 +26,35 @@ public class Document {
     public Document() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public MINumber getMiNumber() {
         return miNumber;
     }
 
-    public PINumber getPiNumber() {
-        return piNumber;
-    }
-
     public void setMiNumber(MINumber miNumber) {
         this.miNumber = miNumber;
     }
 
-    public void setPiNumber(PINumber piNumber) {
-        this.piNumber = piNumber;
+    public PINumber getPiNumber() {
+        return piNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Document{" +
-                "id=" + id +
-                ", miNumber=" + miNumber +
-                ", piNumber=" + piNumber +
-                '}';
+    public void setPiNumber(PINumber piNumber) {
+        this.piNumber = piNumber;
     }
 }

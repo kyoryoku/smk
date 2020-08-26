@@ -19,7 +19,6 @@ public class TestSample {
     private Project project;
     private LocalDate entryDate;
     private LocalDate returnDate;
-    private Employee employee;
 
     public TestSample() {
     }
@@ -54,24 +53,5 @@ public class TestSample {
 
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @Override
-    public String toString() {
-        return "TestSample{" +
-                "id=" + id +
-                ", project=" + project +
-                ", entryDate=" + entryDate +
-                ", returnDate=" + returnDate +
-                ", employee=" + employee +
-                '}';
     }
 }

@@ -19,9 +19,17 @@ public class Project {
     @OneToOne
     @JoinColumn(name = "contract_id", unique = true, nullable = false, updatable = false)
     private Contract contract;
-    private Employee employee;
 
     public Project() {
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public TestSample getTestSample() {
@@ -30,14 +38,6 @@ public class Project {
 
     public void setTestSample(TestSample testSample) {
         this.testSample = testSample;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getStatus() {
@@ -54,24 +54,5 @@ public class Project {
 
     public void setContract(Contract contract) {
         this.contract = contract;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id=" + id +
-                ", testSample=" + testSample +
-                ", status='" + status + '\'' +
-                ", contract=" + contract +
-                ", employee=" + employee +
-                '}';
     }
 }

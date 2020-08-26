@@ -16,7 +16,6 @@ public class Product {
     private Task task;
     private String name;
     private String serialNumber;
-    private Employee employee;
 
     public void setId(Long id) {
         this.id = id;
@@ -29,37 +28,27 @@ public class Product {
         return id;
     }
 
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
     public String getName() {
         return name;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public Employee getEmployee() {
-        return employee;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                ", employee=" + employee +
-                '}';
     }
 }
