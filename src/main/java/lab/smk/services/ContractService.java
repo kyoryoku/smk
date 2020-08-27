@@ -1,4 +1,4 @@
-package lab.smk.services.journal;
+package lab.smk.services;
 
 import lab.smk.models.Contract;
 import lab.smk.repo.ContractRepository;

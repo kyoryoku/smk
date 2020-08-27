@@ -15,12 +15,12 @@ public class Document {
     @OneToOne(optional = false, mappedBy = "document")
     private Task task;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name="miNumber_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="miNumber_id")
     private MINumber miNumber;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name="piNumber_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="piNumber_id")
     private PINumber piNumber;
 
     public Document() {
@@ -56,5 +56,15 @@ public class Document {
 
     public void setPiNumber(PINumber piNumber) {
         this.piNumber = piNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "id=" + id +
+                ", task=" + task +
+                ", miNumber=" + miNumber +
+                ", piNumber=" + piNumber +
+                '}';
     }
 }

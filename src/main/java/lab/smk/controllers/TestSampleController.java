@@ -6,17 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.ws.Action;
+import java.util.Optional;
 
 @Controller
 public class TestSampleController {
     @Autowired
     TestSampleService testSampleService;
 
+//    @GetMapping("/testSample")
+//    public @ResponseBody Iterable<TestSample> getTestSample(Model model){
+//        return testSampleService.findAll();
+//    }
+
     @GetMapping("/testSample")
-    public String getTestSample(Model model){
-        model.addAttribute("testSampleList", testSampleService.findAll());
-        return "testSample";
+    public @ResponseBody Optional<TestSample> getTestSample(Model model){
+        return testSampleService.findById(17L);
     }
+
+
+    @GetMapping("/testSample-generate")
+    public @ResponseBody String generateTestSample(Model model){
+        testSampleService.generateTestSample();
+        return "ok";
+    }
+
 }

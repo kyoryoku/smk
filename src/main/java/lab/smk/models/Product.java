@@ -51,4 +51,14 @@ public class Product {
     public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", task=" + task +
+                ", name='" + name + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
+                '}';
+    }
 }

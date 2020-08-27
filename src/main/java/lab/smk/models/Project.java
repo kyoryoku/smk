@@ -12,12 +12,17 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+
     @OneToOne(optional = false, mappedBy = "project")
     private TestSample testSample;
+
+
+
     private String status;
 
-    @OneToOne
-    @JoinColumn(name = "contract_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "contract_id")
     private Contract contract;
 
     public Project() {
@@ -54,5 +59,15 @@ public class Project {
 
     public void setContract(Contract contract) {
         this.contract = contract;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", testSample=" + testSample +
+                ", status='" + status + '\'' +
+                ", contract=" + contract +
+                '}';
     }
 }

@@ -14,9 +14,12 @@ public class TestSample {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "project_id", unique = true, nullable = false, updatable = false)
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "project_id", nullable = false)
     private Project project;
+
+
     private LocalDate entryDate;
     private LocalDate returnDate;
 
@@ -53,5 +56,15 @@ public class TestSample {
 
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
+    }
+
+    @Override
+    public String toString() {
+        return "TestSample{" +
+                "id=" + id +
+                ", project=" + project +
+                ", entryDate=" + entryDate +
+                ", returnDate=" + returnDate +
+                '}';
     }
 }

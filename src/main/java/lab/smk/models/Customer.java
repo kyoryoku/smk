@@ -61,4 +61,15 @@ public class Customer {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", contract=" + contract +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }

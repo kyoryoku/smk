@@ -54,4 +54,14 @@ public class PINumber {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "PINumber{" +
+                "id=" + id +
+                ", document=" + document +
+                ", number='" + number + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

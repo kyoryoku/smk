@@ -13,11 +13,11 @@ public class Task {
     private Long id;
     private String task;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "product_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private Product product;
-    @OneToOne(optional = false)
-    @JoinColumn(name = "document_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "document_id")
     private Document document;
 
     @ManyToOne
@@ -65,5 +65,16 @@ public class Task {
 
     public void setContract(Contract contract) {
         this.contract = contract;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", task='" + task + '\'' +
+                ", product=" + product +
+                ", document=" + document +
+                ", contract=" + contract +
+                '}';
     }
 }

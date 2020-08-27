@@ -54,4 +54,14 @@ public class MINumber {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "MINumber{" +
+                "id=" + id +
+                ", document=" + document +
+                ", number='" + number + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }

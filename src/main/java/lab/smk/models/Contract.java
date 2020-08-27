@@ -18,8 +18,8 @@ public class Contract {
     @OneToOne(optional = false, mappedBy = "contract")
     private Project project;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     private String number;
@@ -87,5 +87,18 @@ public class Contract {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "id=" + id +
+                ", project=" + project +
+                ", customer=" + customer +
+                ", number='" + number + '\'' +
+                ", date=" + date +
+                ", tasks=" + tasks +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
