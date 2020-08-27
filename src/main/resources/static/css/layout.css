@@ -59,7 +59,8 @@
     margin-top: 90px;
 }
 
-.lab-tools-button{
+
+.button{
     width:10%;
     background-color: #343a40; /* #6c757e; */
     display: block;
@@ -68,21 +69,22 @@
 
 }
 
-.lab-tools-button:focus{
+.button:focus{
     outline: none;
 }
 
-.lab-svg:active{
+.svg:active{
     stroke: #ff6666; fill: #ff6666;
 }
-.lab-svg:hover{
+.svg:hover{
     stroke: #dbd9d9; fill: #dbd9d9;
 }
 
-.lab-svg{
+.svg{
    color: #bdbdbd;
 }
 
-.lab-tools-group button{
+.btn-group button{
     border: none;
 }
+
