@@ -11,63 +11,106 @@
 
 
 <div class="lab-main">
-    <form action="/journal/weather/add" method="post">
-        <button type="button" class="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Добавьте значения</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="temp" class="col-form-label">Температура:</label>
-                                <input type="text" class="form-control" name="temp" id="temp">
-                            </div>
-                            <div class="form-group">
-                                <label for="hum" class="col-form-label">Влажность:</label>
-                                <input type="text"  class="form-control" name="hum" id="hum">
-                            </div>
-                            <div class="form-group">
-                                <label for="pres" class="col-form-label">Давление:</label>
-                                <input type="text" class="form-control" name="pres" id="pres">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" class="btn btn-primary">Сохранить запись</button>
+
+
+
+    <div class="lab-tools">
+        <div class="lab-tools-group" style="width:100% float: left">
+            <button class="lab-tools-button"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus-square lab-svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+                <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            </svg></button>
+
+            <button class="lab-tools-button" style="width:100% float: left"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-calendar2-range-fill lab-svg" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M14 2H2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM2 1a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
+                <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
+                <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM9 8a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zm-8 2h4a1 1 0 1 1 0 2H1v-2z"/>
+            </svg></button>
+
+
+        </div>
+    </div>
+
+
+
+   <!-- <div class="lab-tools">
+        <form style="float: left" action="/journal/weather/add" method="post">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" >Добавить</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Добавьте значения</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="temp" class="col-form-label">Температура:</label>
+                                    <input type="text" class="form-control" name="temp" id="temp">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hum" class="col-form-label">Влажность:</label>
+                                    <input type="text"  class="form-control" name="hum" id="hum">
+                                </div>
+                                <div class="form-group">
+                                    <label for="pres" class="col-form-label">Давление:</label>
+                                    <input type="text" class="form-control" name="pres" id="pres">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            <button type="submit" class="btn btn-primary">Сохранить запись</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
 
-    <table class="table table-striped table-bordered table-hover table-dark">
-        <thead>
-        <tr>
-            <th scope="col" >Дата</th>
-            <th scope="col">Температура</th>
-            <th scope="col">Влажность</th>
-            <th scope="col">Давление</th>
-        </tr>
-        </thead>
+        <form style="float: left" action="/journal/weather/find-range" method="post">
+            <div class="d-flex">
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-secondary" id="dropdownMenuOffse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                        Поиск по периоду дат
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                        <input name="startDate" type="date"/>
+                        <input name="endDate" type="date"/>
+                        <button type="submit" class="btn btn-secondary">Поиск</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>-->
 
-        <tbody>
-        <tr th:each="el : ${weatherList}">
-            <td th:text="${el.date}"></td>
-            <td th:text="${el.temp}"></td>
-            <td th:text="${el.hum}"></td>
-            <td th:text="${el.pres}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div style="padding-top: 70px;">
+        <p th:if="${filtered}"> Найденные значения </p>
 
+        <table class="table table-striped table-bordered table-hover table-dark">
+            <thead>
+            <tr>
+                <th scope="col" >Дата</th>
+                <th scope="col">Температура</th>
+                <th scope="col">Влажность</th>
+                <th scope="col">Давление</th>
+            </tr>
+            </thead>
 
+            <tbody>
+            <tr th:each="el : ${weatherList}">
+                <td th:text="${el.date}"></td>
+                <td th:text="${el.temp}"></td>
+                <td th:text="${el.hum}"></td>
+                <td th:text="${el.pres}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
 
 
 </div>

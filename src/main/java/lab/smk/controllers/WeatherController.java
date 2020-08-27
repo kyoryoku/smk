@@ -38,12 +38,14 @@ public class WeatherController {
     }
 
     @PostMapping("/journal/weather/find-range")
-    public @ResponseBody Iterable<Weather> findBetween (
+    public String findBetween (
             Model model,
             @RequestParam String startDate,
             @RequestParam String endDate)
     {
-        return weatherService.findBetween(startDate, endDate);
+        model.addAttribute("filtered", true);
+        model.addAttribute("weatherList", weatherService.findBetween(startDate, endDate));
+        return "weather";
     }
 
 }
