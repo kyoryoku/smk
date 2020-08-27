@@ -1,6 +1,6 @@
 package lab.smk.controllers;
 
-import lab.smk.services.journal.ProductService;
+import lab.smk.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

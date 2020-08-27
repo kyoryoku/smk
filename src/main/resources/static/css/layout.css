@@ -42,3 +42,47 @@
     margin-left: 37%;
     margin-right: 37%
 }
+
+.lab-tools{
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 75px;
+    left: 250px;
+    overflow-x: hidden;
+    background-color: blue;
+}
+
+.lab-content{
+    background-color: blue;
+    margin-top: 90px;
+}
+
+.lab-tools-button{
+    width:10%;
+    background-color: #343a40; /* #6c757e; */
+    display: block;
+    height: 40px;
+    border-collapse: collapse;
+
+}
+
+.lab-tools-button:focus{
+    outline: none;
+}
+
+.lab-svg:active{
+    stroke: #ff6666; fill: #ff6666;
+}
+.lab-svg:hover{
+    stroke: #dbd9d9; fill: #dbd9d9;
+}
+
+.lab-svg{
+   color: #bdbdbd;
+}
+
+.lab-tools-group button{
+    border: none;
+}
