@@ -2,13 +2,12 @@ package lab.smk.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Data;
-
+import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name = "lab_task")
-@Data
+@Getter @Setter @NoArgsConstructor
+@Entity @Table(name = "lab_task")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Task {
 
@@ -16,9 +15,10 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "contract_id")
-    private Contract contract;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Contract product;
 
-    private String task;
+
+
 }
