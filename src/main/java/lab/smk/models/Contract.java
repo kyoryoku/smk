@@ -2,12 +2,12 @@ package lab.smk.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.*;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Getter @Setter @NoArgsConstructor
 @Entity @Table(name = "lab_contract")
@@ -18,10 +18,17 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String number;
+    private LocalDate date;
+
     @OneToOne(mappedBy = "contract")
     private Project project;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
     private List<Product> products;
 
 }

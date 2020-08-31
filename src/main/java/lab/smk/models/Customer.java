@@ -9,25 +9,20 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+
 @Getter @Setter @NoArgsConstructor
-@Entity @Table(name = "lab_product")
+@Entity @Table(name = "lab_customer")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Product {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "contract_id")
+    @OneToOne(mappedBy = "customer")
     private Contract contract;
 
-    private LocalDate arrivalDate;
-    private LocalDate returnDate;
     private String name;
-    private String serialNumber;
-
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Task> tasks;
-
+    private String address;
+    private String comments;
 }

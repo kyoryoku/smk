@@ -2,9 +2,10 @@ package lab.smk.models;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import javax.persistence.*;
-import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
 @Entity @Table(name = "lab_task")
@@ -17,8 +18,9 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Contract product;
+    private Product product;
 
+    private String task;
 
 
 }
