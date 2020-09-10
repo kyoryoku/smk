@@ -20,17 +20,35 @@
         </thead>
 
         <tbody>
-        <span th:each="elProject : ${projectsList}">
-            <span th:each="elProduct: ${elProject.contract.products}">
-                <tr th:each="elTask: ${elProduct.tasks}">
-                    <td> номер </td>
-                    <td th:text="${elProject.contract.number} + ' от ' + ${elProject.contract.date}"></td>
-                    <td th:text="${elProject.contract.customer.name}"></td>
-                    <td th:text="${elProduct.name} + ' (' +  ${elProduct.serialNumber} + ')'"></td>
-                    <td th:text="${elTask.task}"></td>
-                </tr>
-            </span>
-        </span>
+            <tr th:each="el, state : ${taskList}">
+                <td th:text="${state.index} + 1">  </td>
+                <td>
+                    <a class="nav-link"
+                       th:href="'/contract/' +  ${el.product.contract.id}"
+                       th:text="${el.product.contract.number} + ' от ' + ${el.product.contract.date}">
+                    </a>
+                </td>
+                <td>
+                    <a class="nav-link"
+                       th:href="'/customer/' + ${el.product.contract.customer.id}"
+                       th:text="${el.product.contract.customer.name}">
+                    </a>
+                </td>
+
+                <td>
+                    <a class="nav-link"
+                       th:href="'/product/' + ${el.product.id}"
+                       th:text="${el.product.name} + ' (' +  ${el.product.serialNumber} + ')'">
+                    </a>
+                </td>
+
+                <td>
+                    <a class="nav-link"
+                       th:href="'/task/' + ${el.id}"
+                       th:text="${el.task}">
+                    </a>
+                </td>
+            </tr>
         </tbody>
     </table>
 

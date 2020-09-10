@@ -71,12 +71,61 @@ public class TestController {
         customer.setName("OOO Зеленоглазое такси");
         customer.setAddress("Минск");
 
-        contract.setNumber("001123123");
+        contract.setNumber(Integer.toString((int)(Math.random() * 3000)));
         contract.setDate(LocalDate.now());
 
         projectRepository.save(project);
 
         return project;
+    }
+
+    @GetMapping("/test/add-random-project")
+    public @ResponseBody Long addRandomProject (Model model){
+
+        for(int projectCount = 0; projectCount < 10; projectCount++){
+
+            Project project = new Project();
+            Contract contract = new Contract();
+            Customer customer = new Customer();
+            List<Product> productList = new ArrayList<Product>();
+
+            project.setContract(contract);
+
+            contract.setProject(project);
+            contract.setCustomer(customer);
+            contract.setProducts(productList);
+            contract.setNumber("000" + projectCount);
+            contract.setDate(LocalDate.now().minusDays(projectCount));
+
+            customer.setContract(contract);
+            customer.setName("Фирма_" + projectRepository.count());
+            customer.setAddress("Какойто город, какая улица, какойто дом");
+
+            for(int i = 0; i < 1 + (int)(Math.random() * 3 * 10); i++){
+
+                Product product = new Product();
+                List<Task> taskList = new ArrayList<Task>();
+
+                for(int j = 0; j < 1 + (int)(Math.random() * 5 * 10); j++){
+                    Task task = new Task();
+                    task.setProduct(product);
+                    task.setTask("Выполнить ченить   " + j + "   для продукта   " + i);
+                    taskList.add(task);
+                }
+                product.setTasks(taskList);
+                product.setName("Продукт  " + i);
+                product.setContract(contract);
+                product.setSerialNumber(Integer.toString((int)(Math.random() * 100000)));
+
+                productList.add(product);
+            }
+
+            projectRepository.save(project);
+
+
+        }
+
+        return projectRepository.count();
     }
 
 
