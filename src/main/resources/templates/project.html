@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Program page'})"/>
+<body>
+
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
+
+<div class="lab-main">
+
+    <table class="table table-striped table-bordered table-hover table-dark">
+        <thead>
+        <tr>
+            <th scope="col" >#</th>
+            <th scope="col">Договор</th>
+            <th scope="col">Заказчик</th>
+            <th scope="col">Продукт</th>
+            <th scope="col">Задача</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <span th:each="elProject : ${projectsList}">
+            <span th:each="elProduct: ${elProject.contract.products}">
+                <tr th:each="elTask: ${elProduct.tasks}">
+                    <td> номер </td>
+                    <td th:text="${elProject.contract.number} + ' от ' + ${elProject.contract.date}"></td>
+                    <td th:text="${elProject.contract.customer.name}"></td>
+                    <td th:text="${elProduct.name} + ' (' +  ${elProduct.serialNumber} + ')'"></td>
+                    <td th:text="${elTask.task}"></td>
+                </tr>
+            </span>
+        </span>
+        </tbody>
+    </table>
+
+</div>
+
+<div th:replace="fragments/scripts :: bootstrap-js"/>
+</body>
+</html>
