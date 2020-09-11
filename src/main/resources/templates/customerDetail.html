@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Program page'})"/>
+<body>
+
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
+
+<div class="lab-main">
+
+    <div style="color:white; padding-top: 50px; padding-left: 50px">
+
+        <h1>
+           <span th:text="${customer.name}"/>
+        </h1>
+
+        <br>
+        <h3>
+            Адрес:
+        </h3>
+        <p th:text="${customer.address}"/>
+
+        <br>
+        <h3>
+            Коментарии:
+        </h3>
+        <p th:text="${customer.comments}"/>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/scripts :: bootstrap-js"/>
+</body>
+</html>

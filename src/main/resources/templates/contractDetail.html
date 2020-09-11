@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Program page'})"/>
+<body>
+
+<nav th:replace="fragments/navbar :: nav-top" />
+<nav th:replace="fragments/navbar :: nav-side" />
+
+<div class="lab-main">
+
+    <div style="color:white; padding-top: 50px; padding-left: 50px">
+
+        <h1>
+            Договор №<span th:text="${contract.number}"/> от <span th:text="${contract.date}"/>
+        </h1>
+
+        <br>
+        <h3>
+            Заказчик: <span> <a th:href="'/customer/' + ${contract.customer.id}"
+                                th:text="${contract.customer.name}"/> </span>
+        </h3>
+
+        <br>
+        <ul  th:each="product : ${contract.products}">
+            <li>
+                <div>
+                    <h4>
+                        <a th:href="'/product/' + ${product.id}"
+                           th:text="${product.name}"
+                        />
+                    </h4>
+                    <p th:text="'SN: ' + ${product.serialNumber}"/>
+                    <p th:text="'Задач: ' + ${#lists.size(product.tasks)}"/>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/scripts :: bootstrap-js"/>
+</body>
+</html>

@@ -98,8 +98,11 @@ public class TestController {
             contract.setDate(LocalDate.now().minusDays(projectCount));
 
             customer.setContract(contract);
-            customer.setName("Фирма_" + projectRepository.count());
-            customer.setAddress("Какойто город, какая улица, какойто дом");
+            customer.setName("Фирма_" + projectCount);
+            customer.setAddress("Какойто город_" + projectCount
+                    + ", какая улица_" + projectCount
+                    + ", какойто дом_" + projectCount);
+            customer.setComments("просто коментарий ололо..");
 
             for(int i = 0; i < 1 + (int)(Math.random() * 3 * 10); i++){
 

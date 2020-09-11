@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +21,8 @@ public class Contract {
     private Long id;
 
     private String number;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @OneToOne(mappedBy = "contract")

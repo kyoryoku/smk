@@ -50,13 +50,13 @@
     z-index: 1;
     top: 75px;
     left: 250px;
-    overflow-x: hidden;
+
     background-color: blue;
 }
 
 .lab-content{
     background-color: blue;
-    margin-top: 90px;
+    padding-top: 40px;
 }
 
 
