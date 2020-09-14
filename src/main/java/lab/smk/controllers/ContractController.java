@@ -1,6 +1,7 @@
 package lab.smk.controllers;
 
 import lab.smk.models.Contract;
+import lab.smk.models.Customer;
 import lab.smk.services.ContractService;
 import lab.smk.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,14 @@ public class ContractController {
     }
 
     @PostMapping("/contract/add")
-    public String getContractId(@ModelAttribute Contract contract, Model model){
+    public String getContractId(@ModelAttribute Contract contract,
+                                @ModelAttribute("customerId") Long customerId,
+                                Model model){
+        Customer customer = customerService.getCustomerById(customerId);
+        contract.setCustomer(customer);
+        customer.setContract(contract);
         contractService.addContract(contract);
-        model.addAttribute("contractList", contractService.findAll());
-        return "contract";
+        return "redirect:/contract";
     }
 
 }

@@ -28,7 +28,7 @@ public class Contract {
     @OneToOne(mappedBy = "contract")
     private Project project;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

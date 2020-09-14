@@ -18,74 +18,59 @@ public class TestController {
     @Autowired
     ProjectRepository projectRepository;
 
-    @GetMapping("/test/add-project")
-    public @ResponseBody Project addProject (Model model){
-
-        Project project = new Project();
-        Contract contract = new Contract();
-        Customer customer = new Customer();
-        Product product1 = new Product();
-        Product product2 = new Product();
-        Task task11 = new Task();
-        Task task12 = new Task();
-        Task task21 = new Task();
-        Task task22 = new Task();
-
-        project.setContract(contract);
-        contract.setProject(project);
-
-        contract.setCustomer(customer);
-        customer.setContract(contract);
-
-        List<Product> productList = new ArrayList<Product>();
-        productList.add(product1);
-        productList.add(product2);
-        contract.setProducts(productList);
-        product1.setContract(contract);
-        product2.setContract(contract);
-
-        List<Task> taskList1 = new ArrayList<Task>();
-        taskList1.add(task11);
-        taskList1.add(task12);
-
-        List<Task> taskList2 = new ArrayList<Task>();
-        taskList1.add(task21);
-        taskList1.add(task22);
-
-        product1.setTasks(taskList1);
-        product2.setTasks(taskList2);
-        task11.setProduct(product1);
-        task12.setProduct(product1);
-        task21.setProduct(product2);
-        task22.setProduct(product2);
-
-        product1.setName("router 1");
-        product2.setName("switch 2");
-
-        task11.setTask("разработать МИ");
-        task12.setTask("испытать");
-
-        task21.setTask("испытать");
-        task22.setTask("оформить ТО");
-
-        customer.setName("OOO Зеленоглазое такси");
-        customer.setAddress("Минск");
-
-        contract.setNumber(Integer.toString((int)(Math.random() * 3000)));
-        contract.setDate(LocalDate.now());
-
-        projectRepository.save(project);
-
-        return project;
-    }
-
     @GetMapping("/test/add-random-project")
     public @ResponseBody Long addRandomProject (Model model){
+
+
 
         for(int projectCount = 0; projectCount < 10; projectCount++){
 
             Project project = new Project();
-            Contract contract = new Contract();
+            Customer customer = new Customer();
+            List<Contract> contractList = new ArrayList<Contract>();
+            for(int contractCount = 0; contractCount < 3; contractCount++){
+                Contract contract = new Contract();
+                List<Product> productList = new ArrayList<Product>();
+
+                for (int productCount = 0; productCount < 5; productCount++){
+                    Product product = new Product();
+                    List<Task> taskList = new ArrayList<Task>();
+
+                    for (int taskCount = 0; taskCount < 4; taskCount++){
+                        Task task = new Task();
+                        task.setTask("задача " + taskCount +
+                                " для продукта " + productCount +
+                                " под договор " + contractCount +
+                                " в проекте " + projectCount);
+                        task.setProduct(product);
+                        taskList.add(task);
+                    }
+                    product.setName("продукт " + productCount);
+                    product.setSerialNumber("00000" + productCount);
+                    product.setTasks(taskList);
+                    product.setContract(contract);
+                    productList.add(product);
+                }
+                contract.setNumber("00" + contractCount);
+                contract.setDate(LocalDate.now().minusDays(contractCount));
+                contract.setProducts(productList);
+                contract.setCustomer(customer);
+                contract.setProject(project);
+
+                project.setContract(contract);
+            }
+            customer.setName("фирма " + projectCount);
+            customer.setAddress("город, улица, дом");
+            customer.setComments("коментарий");
+            customer.setContracts(contractList);
+
+        }
+
+
+        for(int projectCount = 0; projectCount < 10; projectCount++){
+
+            Project project = new Project();
+            List<Contract> contractList = new ArrayList<Contract>();
             Customer customer = new Customer();
             List<Product> productList = new ArrayList<Product>();
 

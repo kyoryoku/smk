@@ -29,25 +29,27 @@
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label for="number" class="col-form-label">Номер договора:</label>
-                                    <input type="text" class="form-control" name="number" id="number">
+                                    <input type="text" class="form-control" id="number" name="number" />
                                 </div>
 
                                 <div class="form-group col">
                                     <label for="date" class="col-form-label">Дата договора:</label>
-                                    <input type="text" class="form-control" name="date" id="date">
+                                    <input type="text" class="form-control" id="date" name="date" />
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="customer" class="col-form-label">Заказчик:</label>
-                                    <select class="custom-select" id="customer">
+                                    <label for="customerId" class="col-form-label">Заказчик:</label>
+                                    <select class="custom-select" id="customerId" name="customerId" >
                                         <option selected>  </option>
-                                        <option th:each="customer : ${customerList}" th:text="${customer.name}" th:value="${customer}" />
-
+                                        <option th:each="customer : ${customerList}"
+                                                th:text="${customer.name}"
+                                                th:value="${customer.id}"/>
                                     </select>
                                 </div>
                             </div>
+
                         </form>
                     </div>
 
@@ -72,22 +74,22 @@
             </thead>
 
             <tbody>
-            <tr th:each="contract, state : ${contractList}">
+            <tr th:each="contract1, state : ${contractList}">
                 <td th:text="${state.index} + 1"> </td>
 
                 <td>
                     <a class="nav-link"
-                       th:href="'/contract/' +  ${contract.id}"
-                       th:text="${contract.number}">
+                       th:href="'/contract/' +  ${contract1.id}"
+                       th:text="${contract1.number}">
                     </a>
                 </td>
 
-                <td th:text="${contract.date}"> </td>
+                <td th:text="${contract1.date}"> </td>
 
                 <td>
                     <a class="nav-link"
-                       th:href="'/customer/' + ${contract.customer.id}"
-                       th:text="${contract.customer.name}">
+                       th:href="'/customer/' + ${contract1.customer.id}"
+                       th:text="${contract1.customer.name}">
                     </a>
                 </td>
             </tr>
