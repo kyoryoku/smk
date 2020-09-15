@@ -29,12 +29,12 @@ public class Contract {
     @OneToOne(mappedBy = "contract", cascade = CascadeType.ALL)
     private Project project;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public void addProject(Project project){
         project.setContract(this);
@@ -42,13 +42,7 @@ public class Contract {
     }
 
     public void addCustomer(Customer customer){
-        if (customer.getContracts() == null){
-            ArrayList<Contract> tmp = new ArrayList<>();
-            tmp.add(this);
-            customer.setContracts(tmp);
-        } else {
-            customer.getContracts().add(this);
-        }
+        customer.getContracts().add(this);
         this.customer = customer;
     }
 

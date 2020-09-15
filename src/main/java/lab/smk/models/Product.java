@@ -28,8 +28,8 @@ public class Product {
     private String name;
     private String serialNumber;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Task> tasks;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
 
     public void addContract(Contract contract){
         contract.getProducts().add(this);
@@ -37,9 +37,6 @@ public class Product {
     }
 
     public void addTask(Task task){
-        if (this.tasks == null){
-            this.tasks = new ArrayList<Task>();
-        }
         task.setProduct(this);
         this.tasks.add(task);
     }

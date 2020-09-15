@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
@@ -20,7 +21,7 @@ public class Customer {
     private Long id;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Contract> contracts;
+    private List<Contract> contracts = new ArrayList<>();
 
     private String name;
     private String address;
