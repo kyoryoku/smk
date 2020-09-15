@@ -18,4 +18,8 @@ public class Project {
     @JoinColumn(name = "contract_id")
     private Contract contract;
 
+    public void addContract(Contract contract){
+        contract.setProject(this);
+        this.contract = contract;
+    }
 }

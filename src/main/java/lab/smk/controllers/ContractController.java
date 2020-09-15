@@ -41,10 +41,10 @@ public class ContractController {
     public String getContractId(@ModelAttribute Contract contract,
                                 @ModelAttribute("customerId") Long customerId,
                                 Model model){
-        Customer customer = customerService.getCustomerById(customerId);
-        contract.setCustomer(customer);
-        customer.setContract(contract);
-        contractService.addContract(contract);
+//        Customer customer = customerService.getCustomerById(customerId);
+//        contract.setCustomer(customer);
+//        customer.setContract(contract);
+//        contractService.addContract(contract);
         return "redirect:/contract";
     }
 

@@ -19,10 +19,15 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Contract> contracts;
 
     private String name;
     private String address;
     private String comments;
+
+    public void addContract(Contract contract){
+        contract.setCustomer(this);
+        this.contracts.add(contract);
+    }
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Getter @Setter @NoArgsConstructor
 @Entity @Table(name = "lab_product")
@@ -29,5 +30,18 @@ public class Product {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Task> tasks;
+
+    public void addContract(Contract contract){
+        contract.getProducts().add(this);
+        this.contract = contract;
+    }
+
+    public void addTask(Task task){
+        if (this.tasks == null){
+            this.tasks = new ArrayList<Task>();
+        }
+        task.setProduct(this);
+        this.tasks.add(task);
+    }
 
 }

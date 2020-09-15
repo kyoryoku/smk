@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
@@ -25,7 +26,7 @@ public class Contract {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
-    @OneToOne(mappedBy = "contract")
+    @OneToOne(mappedBy = "contract", cascade = CascadeType.ALL)
     private Project project;
 
     @ManyToOne
@@ -34,5 +35,29 @@ public class Contract {
 
     @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
     private List<Product> products;
+
+    public void addProject(Project project){
+        project.setContract(this);
+        this.project = project;
+    }
+
+    public void addCustomer(Customer customer){
+        if (customer.getContracts() == null){
+            ArrayList<Contract> tmp = new ArrayList<>();
+            tmp.add(this);
+            customer.setContracts(tmp);
+        } else {
+            customer.getContracts().add(this);
+        }
+        this.customer = customer;
+    }
+
+    public void addProduct(Product product){
+        if (this.products == null){
+            this.products = new ArrayList<Product>();
+        }
+        product.setContract(this);
+        this.products.add(product);
+    }
 
 }

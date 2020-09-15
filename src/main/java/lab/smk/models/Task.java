@@ -22,5 +22,9 @@ public class Task {
 
     private String task;
 
+    public void addProduct(Product product){
+        product.getTasks().add(this);
+        this.product = product;
+    }
 
 }
