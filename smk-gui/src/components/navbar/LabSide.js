@@ -5,7 +5,7 @@ class NavSide extends Component {
     render() {
         return (
             <div className='lab-nav-side'>
-                LABSIDE
+                LABSIDE11
             </div>
             
         );
