@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-./smk-gui/node_modules/
+/smk-gui/node_modules/
