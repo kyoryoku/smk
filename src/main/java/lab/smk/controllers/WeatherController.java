@@ -13,6 +13,11 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
+    @GetMapping("/api/weather")
+    public @ResponseBody Iterable<Weather> apiWeather(Model model){
+        return weatherService.findAll();
+    }
+
     @GetMapping("/journal/weather")
     public String weather (Model model){
         model.addAttribute("weatherList", weatherService.findAll());
