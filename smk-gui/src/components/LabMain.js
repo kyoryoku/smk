@@ -17,20 +17,27 @@ class LabMain extends Component {
             hum: null
         }
 
-        this.state = {date: new Date(), m: false, weatherData: weatherData};
+
+
+        this.state = {
+            date: new Date(),
+            m: false,
+            weatherData: weatherData,
+            isLoadData: false,
+            text: 'Загрузка данных'
+        };
 
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.saveModal = this.saveModal.bind(this);
+        this.loadData = this.loadData.bind(this);
     }
 
-    componentDidMount() {
+     componentDidMount() {
         this.timerID = setInterval(
             () => this.tick(),
             1000
         );
-
-
     }
 
     componentWillUnmount() {
@@ -55,30 +62,75 @@ class LabMain extends Component {
         });
     }
 
-    async saveModal(){
+     saveModal(){
         this.setState({
             m: false
         });
         clearInterval(this.timerID);
-
-
-        let weatherData = await API.get('/weather');
-        weatherData = weatherData.data[0];
-
-        this.setState({
-            weatherData: weatherData
-        })
-
     }
 
+    async loadData(){
+        let weatherData;
+        try {
+            this.setState({
+                text: 'Данные загружаются...'
+            });
+            weatherData = await API.get('/weather');
+
+        } catch (e){
+            this.setState({
+                text: 'Ошибка при получении данных с сервера. Проверьте подключение!'
+            });
+            return
+        }
+
+        weatherData = weatherData.data[0];
+        this.setState({
+            weatherData: weatherData,
+            isLoadData: true
+        })
+    }
 
     render() {
+        let content;
+        if (this.state.isLoadData) {
+            content =
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Дата</td>
+                        <td>Время</td>
+                        <td>Температура</td>
+                        <td>Влажность</td>
+                        <td>Давление</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{this.state.weatherData.id}</td>
+                        <td>{this.state.weatherData.date}</td>
+                        <td>{this.state.weatherData.time}</td>
+                        <td>{this.state.weatherData.temp}</td>
+                        <td>{this.state.weatherData.hum}</td>
+                        <td>{this.state.weatherData.pres}</td>
+                    </tr>
+                    </tbody>
+                </Table>;
+        } else {
+            content = <p>{this.state.text}</p>;
+        }
+
         return (
             <div className='lab-main'>
                 {this.state.date.toLocaleTimeString()}
 
                 <Button variant="primary" onClick={this.openModal}>
                     Launch demo modal
+                </Button>
+
+                <Button variant="primary" onClick={this.loadData}>
+                    Загрузить данные
                 </Button>
 
                 <Modal show={this.state.m} onHide={this.closeModal} centered size="lg">
@@ -96,24 +148,7 @@ class LabMain extends Component {
                     </Modal.Footer>
                 </Modal>
 
-                <Table striped bordered hover variant="dark">
-                    <thead>
-                    <tr>
-                        <td>q1</td>
-                        <td>q2</td>
-                        <td>q3</td>
-                        <td>q4</td>
-                        <td>q5</td>
-                        <td>q6</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{this.state.weatherData.id}</td>
-                    </tr>
-                    </tbody>
-                </Table>
-
+                {content}
 
             </div>
         );
