@@ -1,20 +1,12 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import LabTop from './components/navbar/LabTop.js';
-import LabSide from './components/navbar/LabSide.js';
-import LabTools from './components/LabTools.js';
-import LabMain from './components/LabMain.js';
+import NavSide from './components/NavSide'
 
 function App() {
   return (
     <div>
-      <LabTop/>
-      <LabSide/>
-      <LabTools/>
-      <LabMain/>
+        <NavSide />
     </div>
   );
 }
 
-export default App;
+export default App
