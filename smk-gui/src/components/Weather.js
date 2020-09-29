@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -31,16 +31,26 @@ const rows = [
     createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
+let weatherData = [];
+
 async function loadData(){
-    console.log('загружаем данные...');
-    console.log(await API.get('/weather'));
+    console.log('load')
+    weatherData = await API.get('/weather');
+    return weatherData
 }
 
 function Home() {
 
     const classes = useStyles();
-    useEffect(() => {
-        loadData();
+    const [isLoadData, setIsLoadData ] = useState(false);
+
+    let wd = loadData();
+    wd.then(data => {
+        console.log('load_ok', data)
+    })
+
+    wd.catch(error => {
+        console.log('load_error', error)
     })
 
     return (
