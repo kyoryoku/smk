@@ -3,18 +3,13 @@ import React, {useState} from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Collapse from "@material-ui/core/Collapse";
-import {grey} from "@material-ui/core/colors";
 import {ExpandLess, ExpandMore} from "@material-ui/icons";
+import {useHistory} from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
-    root:{
-        position: "fixed",
-        top: "60px",
-        width: "250px",
-        backgroundColor: grey["400"],
-    },
     subItem: {
         paddingLeft: theme.spacing(4)
     },
@@ -24,32 +19,51 @@ const useStyles = makeStyles((theme) => ({
 function NavSide() {
 
     const classes = useStyles();
+    const history = useHistory();
     const [collapse1, setCollapse1] = useState(false);
     const [collapse2, setCollapse2] = useState(false);
     const [collapse3, setCollapse3] = useState(false);
 
-
     return (
-        <div className={classes.root}>
+        <div>
             <List>
-                <ListItem button onClick={() => {setCollapse1(!collapse1)}}  >
-                    <ListItemText primary="Меню 1" />
+                <ListItem
+                    button
+                    onClick={() => {setCollapse1(!collapse1)}}
+                >
+                    <ListItemText primary="Журналы 1" />
                     {
                         collapse1 ?  <ExpandLess /> : <ExpandMore />
                     }
                 </ListItem>
 
-                <Collapse in={collapse1}  timeout="50" >
+                <Collapse in={collapse1}  timeout={50} >
                     <List disablePadding>
-                        <ListItem button className={classes.subItem}>
-                            <ListItemText primary="Меню 1 1" />
+
+                        <ListItem
+                            button
+                            className={classes.subItem}
+                            onClick={() => {history.push('/test')}}
+                        >
+                            <ListItemText primary="TEST page" />
                         </ListItem>
-                        <ListItem button className={classes.subItem} >
-                            <ListItemText primary="Меню 1 2" />
+
+                        <ListItem
+                            button
+                            className={classes.subItem}
+                            onClick={() => {history.push('/home')}}
+                        >
+                            <ListItemText primary="Home page" />
                         </ListItem>
-                        <ListItem button className={classes.subItem} >
-                            <ListItemText primary="Меню 1 3" />
+
+                        <ListItem
+                            button
+                            className={classes.subItem}
+                            onClick={() => {history.push('/weather')}}
+                        >
+                            <ListItemText primary="Журнал погоды" />
                         </ListItem>
+
                     </List>
                 </Collapse>
 
@@ -61,7 +75,7 @@ function NavSide() {
                         collapse2 ?  <ExpandLess /> : <ExpandMore />
                     }
                 </ListItem>
-                <Collapse in={collapse2}  timeout="50" >
+                <Collapse in={collapse2}  timeout={50} >
                     <List disablePadding>
                         <ListItem button className={classes.subItem} >
                             <ListItemText primary="Меню 2 1" />
@@ -74,6 +88,7 @@ function NavSide() {
                         <ListItem button className={classes.subItem} >
                             <ListItemText primary="Меню 2 3" />
                         </ListItem>
+
                     </List>
                 </Collapse>
 
@@ -84,7 +99,7 @@ function NavSide() {
                         collapse3 ?  <ExpandLess /> : <ExpandMore />
                     }
                 </ListItem>
-                <Collapse in={collapse3}  timeout="50" >
+                <Collapse in={collapse3}  timeout={50} >
                     <List disablePadding>
 
                         <ListItem button className={classes.subItem} >
