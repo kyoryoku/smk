@@ -16,18 +16,19 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         top: '0px',
         left: '0px',
-        zIndex: '1',
+        zIndex: '100',
         width: '100%'
     },
     navSide: {
         position: 'fixed',
         top: '60px',
         left: '0px',
-        width: '245px'
+        width: '245px',
+        zIndex: '100',
     },
     main: {
         marginTop: '80px',
-        marginLeft: '250px'
+        marginLeft: '250px',
     },
 
 }));

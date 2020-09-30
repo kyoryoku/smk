@@ -9,6 +9,12 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import API from "../utils/API";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Box from "@material-ui/core/Box";
+import { convertDate } from '../utils/Utils'
+import WeatherToolsBar from "./WeatherToolsBar";
+
 
 const useStyles = makeStyles((theme) => ({
     root:{
@@ -16,67 +22,58 @@ const useStyles = makeStyles((theme) => ({
     },
     table: {
         minWidth: 500,
+        width: 600,
+    },
+    backdrop: {
+        zIndex: 90,
+        color: '#fff',
     },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-let weatherData = [];
-
-async function loadData(){
-    console.log('load')
-    weatherData = await API.get('/weather');
-    return weatherData
+function f(){
+    console.log()
 }
 
 function Home() {
 
     const classes = useStyles();
-    const [isLoadData, setIsLoadData ] = useState(false);
+    const [wd, setWd] = useState([]);
+    const [showBackDrop, setShowBackDrop] = useState(true);
 
-    let wd = loadData();
-    wd.then(data => {
-        console.log('load_ok', data)
-    })
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await API.get('/weather');
 
-    wd.catch(error => {
-        console.log('load_error', error)
-    })
+            if (result.status === 200){
+                setWd(result.data.reverse());
+                setShowBackDrop(false);
+            }
+        };
+
+        fetchData();
+    }, [])
 
     return (
-        <div className={classes.root}>
+        <Box className={classes.root}>
+            <WeatherToolsBar onChange={} />
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Dessert (100g serving)</TableCell>
-                            <TableCell align="right">Calories</TableCell>
-                            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                            <TableCell align="center">Дата</TableCell>
+                            <TableCell align="center">Температура</TableCell>
+                            <TableCell align="center">Влажность</TableCell>
+                            <TableCell align="center">Давление</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name}>
-                                <TableCell component="th" scope="row">
-                                    {row.name}
-                                </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
+                        {wd.map((row) => (
+                            <TableRow key={row.id}>
+                                <TableCell align="center">{convertDate(row.date)}</TableCell>
+                                <TableCell align="center">{row.temp}</TableCell>
+                                <TableCell align="center">{row.pres}</TableCell>
+                                <TableCell align="center">{row.hum}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
@@ -85,8 +82,10 @@ function Home() {
 
 
 
-
-        </div>
+            <Backdrop open={showBackDrop} className={classes.backdrop}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
+        </Box>
     );
 }
 

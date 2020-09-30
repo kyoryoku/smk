@@ -14,12 +14,13 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/api/weather")
-    public @ResponseBody Iterable<Weather> apiWeather(Model model){
+    public @ResponseBody Iterable<Weather> apiWeather(Model model) throws InterruptedException {
+        Thread.sleep(5000);
         return weatherService.findAll();
     }
 
     @GetMapping("/journal/weather")
-    public String weather (Model model){
+    public String weather (Model model) {
         model.addAttribute("weatherList", weatherService.findAll());
         return "weather";
     }

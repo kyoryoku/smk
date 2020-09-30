@@ -1,5 +1,6 @@
 package lab.smk.controllers;
 
+import com.sun.javaws.IconUtil;
 import lab.smk.models.*;
 import lab.smk.repo.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Controller
@@ -15,7 +18,21 @@ public class TestController {
     @Autowired
     ProjectRepository projectRepository;
 
-    @GetMapping("/test/add-random-project")
+    @GetMapping("/test/calc")
+    public @ResponseBody double calc (Model model){
+
+        BigDecimal chislitel = BigDecimal.valueOf(Math.log(1.0 - 0.99));
+        BigDecimal znamenatel = BigDecimal.valueOf(Math.log(1.0 - Math.pow(0.001, 10)));
+        System.out.println(chislitel);
+        System.out.println(znamenatel);
+
+//        System.out.println(chislitel / znamenatel);
+
+        return 0.1;
+    }
+
+
+        @GetMapping("/test/add-random-project")
     public @ResponseBody String addRandomProject (Model model){
 
         Customer[] customers = new Customer[5];
