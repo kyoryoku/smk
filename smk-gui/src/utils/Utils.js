@@ -1,10 +1,14 @@
 export function convertDate(date){
-    var d = new Date(date);
-    var day = d.getDate();
-    var month = d.getMonth() + 1;
-    if (month <= 9){
-        month = '0' + month
+    let d = new Date(date);
+
+    let day = d.getDate();
+    if (day <= 9){
+        day = '0' + day;
     }
-    var year = d.getFullYear();
-    return day + '.' + month + '.' + year
+    let month = d.getMonth() + 1;
+    if (month <= 9){
+        month = '0' + month;
+    }
+    let year = d.getFullYear();
+    return day + '.' + month + '.' + year;
 }

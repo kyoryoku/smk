@@ -14,6 +14,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
 import { convertDate } from '../utils/Utils'
 import WeatherToolsBar from "./WeatherToolsBar";
+import WeatherToolsAdd from "./WeatherToolsAdd";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function f(){
-    console.log()
+    console.log('111')
 }
 
 function Home() {
@@ -55,7 +56,7 @@ function Home() {
 
     return (
         <Box className={classes.root}>
-            <WeatherToolsBar onChange={} />
+            <WeatherToolsAdd />
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">

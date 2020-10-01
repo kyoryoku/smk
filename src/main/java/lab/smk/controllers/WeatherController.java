@@ -15,7 +15,7 @@ public class WeatherController {
 
     @GetMapping("/api/weather")
     public @ResponseBody Iterable<Weather> apiWeather(Model model) throws InterruptedException {
-        Thread.sleep(5000);
+        //Thread.sleep(5000);  //Задержка в 5 сек для проверки поведения клиента
         return weatherService.findAll();
     }
 

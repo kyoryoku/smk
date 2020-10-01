@@ -5,22 +5,25 @@ import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
 
-function addClick(){
 
-}
 
-function WeatherToolsBar() {
+function WeatherToolsBar({ addClick, editClick, searchClick }) {
+
     return(
         <div>
             <Button onClick={() => {
-
+                addClick()
             }}>
                 <AddBoxOutlinedIcon />
             </Button>
-            <Button>
+            <Button onClick={() => {
+                editClick()
+            }}>
                 <EditOutlinedIcon />
             </Button>
-            <Button>
+            <Button onClick={ () => {
+                searchClick()
+            }}>
                 <SearchOutlinedIcon />
             </Button>
         </div>
