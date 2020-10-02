@@ -1,6 +1,7 @@
 package lab.smk.controllers;
 
 import lab.smk.models.journals.Weather;
+import lab.smk.models.journals.WeatherJSON;
 import lab.smk.services.journal.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,15 @@ public class WeatherController {
     public @ResponseBody Iterable<Weather> apiWeather(Model model) throws InterruptedException {
         //Thread.sleep(5000);  //Задержка в 5 сек для проверки поведения клиента
         return weatherService.findAll();
+    }
+
+    @PostMapping("/api/weather")
+    public @ResponseBody String apiWeatherAdd(
+            @RequestBody WeatherJSON weather,
+            Model model){
+
+        System.out.println(weather);
+        return " ";
     }
 
     @GetMapping("/journal/weather")

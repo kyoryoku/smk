@@ -31,15 +31,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function f(){
-    console.log('111')
-}
-
 function Home() {
 
     const classes = useStyles();
     const [wd, setWd] = useState([]);
     const [showBackDrop, setShowBackDrop] = useState(true);
+    const [refresh, setRefresh] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,11 +49,16 @@ function Home() {
         };
 
         fetchData();
-    }, [])
+    }, [refresh])
+
+    const addClick = () => {
+        setRefresh(true)
+    }
+
 
     return (
         <Box className={classes.root}>
-            <WeatherToolsAdd />
+            <WeatherToolsAdd addClick={addClick} />
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
